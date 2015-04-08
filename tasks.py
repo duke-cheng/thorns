@@ -50,6 +50,7 @@ def nmap_dispath(targets, taskid=None):
 		cmdline = 'python wyportmap.py %s %s' % (targets, taskid)
 	nmap_proc = subprocess.Popen(cmdline,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	process_output = nmap_proc.stdout.readlines()
+	nmap_proc.wait()
 	return process_output
 
 @app.task
